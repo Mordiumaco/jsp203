@@ -14,7 +14,15 @@ public class JSPUserVO {
 	private String email;
 	private String tel;
 	private String profile;
+	private Integer rnum;
 	
+	
+	public Integer getRnum() {
+		return rnum;
+	}
+	public void setRnum(Integer rnum) {
+		this.rnum = rnum;
+	}
 	public String getUserId() {
 		return userId;
 	}

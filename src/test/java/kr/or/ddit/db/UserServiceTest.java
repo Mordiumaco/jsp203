@@ -8,6 +8,7 @@ import java.util.List;
 import kr.or.ddit.user.model.JSPUserVO;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.user.service.UserServiceInf;
+import kr.or.ddit.util.model.PageVo;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -65,7 +66,7 @@ public class UserServiceTest {
 		System.out.println(user_list.get(0).getName());
 		/***Then***/
 
-		assertEquals(5, user_list.size());
+		assertEquals(105, user_list.size());
 	}
 	
 	@Test
@@ -95,4 +96,17 @@ public class UserServiceTest {
 		assertEquals("brown", user.getUserId());
 	}
 
+	@Test
+	public void selectUserPageList(){
+		/***Given***/
+		PageVo page = new PageVo();
+		page.setPage(1);
+		page.setPageSize(10);
+		List<JSPUserVO> userList = service.selectUserPageList(page);
+		System.out.println(userList);
+		/***When***/
+		
+		/***Then***/
+		assertEquals(10, userList.size());
+	}
 }

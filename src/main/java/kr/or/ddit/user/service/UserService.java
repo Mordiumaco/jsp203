@@ -35,10 +35,6 @@ public class UserService implements UserServiceInf{
 
 	@Override
 	public List<JSPUserVO> selectUserPageList(PageVo page) {
-		List<JSPUserVO> userList = selectUserAll();
-		page.setPage(userList.size()/10+1);
-		page.setPageSize(10);
-		
 		return dao.selectUserPageList(page);
 	}
 	

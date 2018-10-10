@@ -1,19 +1,21 @@
 package kr.or.ddit.util.model;
 
 public class PageVo {
-	private int page;
-	private int pageSize;
+	private Integer page;
+	private Integer pageSize;
 	
-	public int getPage() {
+	public Integer getPage() {
 		return page;
 	}
-	public void setPage(int page) {
+	public void setPage(Integer page) {
 		this.page = page;
 	}
-	public int getPageSize() {
+	public Integer getPageSize() {
 		return pageSize;
 	}
-	public void setPageSize(int pageSize) {
+	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
 	}
+	
+	
 }

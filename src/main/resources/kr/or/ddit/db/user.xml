@@ -17,11 +17,12 @@
   </select>
   
   <select id="selectUserPageList" parameterType="kr.or.ddit.util.model.PageVo" resultType="JSPUserVO">
-  	select * from(
-	select rownum rnum, jspuser.* 
+  	select * from
+  	(select rownum rnum, 
+  	jspuser.* 
 	from jspuser
 	order by userId)
-	where rnum between #{page}*#{pageSize}-(#{pageSize}-1) and #{page}*#{pageSize};
+	where rnum between #{page}*#{pageSize}-(#{pageSize}-1) and #{page}*#{pageSize}
   </select>
   
 </mapper>

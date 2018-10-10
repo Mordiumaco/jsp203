@@ -49,10 +49,10 @@
 			<ul>
 <%
 	List<JSPUserVO> userList = (List<JSPUserVO>)request.getAttribute("user_list");
-	
+	List<JSPUserVO> select_list = (List<JSPUserVO>)request.getAttribute("select_list");
 	
 
-	for(int i = 0; i < userList.size(); i++){
+	for(int i = 0; i < 10; i++){
 %>
 		<li><%=userList.get(i).getName()%></li>
 <% 
@@ -75,16 +75,28 @@
 					<th>사용자 생일</th>
 				</tr>
 				<%
-
-			for(int i = 0; i < userList.size(); i++){
-		%>
-				<tr>
-					<td><%=i+1%></td>
-					<td><%=userList.get(i).getUserId()%></td>
-					<td><%=userList.get(i).getName()%></td>
-					<td><%=new SimpleDateFormat("yyyy-MM-dd").format(userList.get(i).getBirth())%></td>
-				</tr>
-		<% 
+			if(select_list != null){
+				for(int i = 0; i < select_list.size(); i++){
+			%>
+					<tr>
+						<td><%=	select_list.get(i).getRnum()%></td>
+						<td><%= select_list.get(i).getUserId()%></td>
+						<td><%= select_list.get(i).getName()%></td>
+						<td><%=new SimpleDateFormat("yyyy-MM-dd").format(select_list.get(i).getBirth())%></td>
+					</tr>
+			<% 
+				}
+			}else{
+				for(int i = 0; i < 10; i++){
+					%>
+					<tr>
+						<td><%=	userList.get(i).getRnum()%></td>
+						<td><%= userList.get(i).getUserId()%></td>
+						<td><%= userList.get(i).getName()%></td>
+						<td><%=new SimpleDateFormat("yyyy-MM-dd").format(userList.get(i).getBirth())%></td>
+					</tr>
+					<% 
+				}
 			}
 		%>
 			</table>
@@ -94,11 +106,33 @@
 
 		<div class="text-center">
 			<ul class="pagination">
-				<li><a href="userAllList.jsp?page=1">1</a></li>
+			
+		<%
+			
+			Integer pagination_page = (Integer)request.getAttribute("page");
+			if(pagination_page != null){
+				for(int i = pagination_page; i < pagination_page+5 && i <= 11; i++){
+				
+		%>		
+				<li><a href="/memberpage?page=<%=i%>"></a><%=i%></li>
+		<%		
+				}
+			}else{
+			
+		
+				for(int i = 0; i < 5; i++){
+		%>
+				<li><a href="/memberpage?page=<%=i+1%>"></a><%=i+1%></li>
+		<% 
+				}
+			}
+		%>
+			
+	<!-- 			<li><a href="#">1</a></li>
 				<li><a href="#">2</a></li>
 				<li><a href="#">3</a></li>
 				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<li><a href="#">5</a></li> -->
 			</ul>
 		</div>
 	</div>
