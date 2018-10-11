@@ -17,4 +17,13 @@ public interface UserDaoInf {
 	public JSPUserVO selectUserByUserVO(JSPUserVO user);
 	
 	public List<JSPUserVO> selectUserPageList(PageVo page);
+	
+	/**
+	* Method : getUserCnt
+	* 작성자 : pc20
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 전체 건수 조회
+	*/
+	int getUserCnt();
 }

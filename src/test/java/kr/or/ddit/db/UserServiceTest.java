@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.user.model.JSPUserVO;
 import kr.or.ddit.user.service.UserService;
@@ -102,11 +103,11 @@ public class UserServiceTest {
 		PageVo page = new PageVo();
 		page.setPage(1);
 		page.setPageSize(10);
-		List<JSPUserVO> userList = service.selectUserPageList(page);
-		System.out.println(userList);
+		Map<String, Object> resultMap = service.selectUserPageList(page);
+		System.out.println(resultMap);
 		/***When***/
 		
 		/***Then***/
-		assertEquals(10, userList.size());
+		assertEquals(10, ((List<JSPUserVO>)resultMap.get("userList")).size());
 	}
 }

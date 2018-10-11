@@ -32,13 +32,10 @@ public class boardServlet extends HttpServlet {
 		UserServiceInf service = new UserService();
 		
 		List<JSPUserVO> user_list = service.selectUserAll();
+		//List<JSPUserVO> select_list = service.selectUserPageList(pageVo);
 		
 		
-		
-		List<JSPUserVO> select_list = service.selectUserPageList(pageVo);
-		
-		
-		request.setAttribute("select_list", select_list);
+		//request.setAttribute("select_list", select_list);
 		request.setAttribute("user_list", user_list);
 		request.setAttribute("page", page);
 		

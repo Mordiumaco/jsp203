@@ -1,6 +1,7 @@
 package kr.or.ddit.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.user.model.JSPUserVO;
 import kr.or.ddit.util.model.PageVo;
@@ -13,5 +14,14 @@ public interface UserServiceInf {
 	
 	public JSPUserVO selectUserByUserVO(JSPUserVO user);
 	
-	public List<JSPUserVO> selectUserPageList(PageVo page);
+	
+	/**
+	* Method : selectUserPageList
+	* 작성자 : pc20
+	* 변경이력 :
+	* @param page
+	* @return
+	* Method 설명 : 사용자 페이징 조회
+	*/
+	public Map<String, Object> selectUserPageList(PageVo page);
 }

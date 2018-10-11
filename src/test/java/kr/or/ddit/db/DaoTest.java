@@ -6,16 +6,25 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 
 import kr.or.ddit.user.dao.UserDao;
+import kr.or.ddit.user.dao.UserDaoInf;
 import kr.or.ddit.user.model.JSPUserVO;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class DaoTest {
 
+	private UserDaoInf userDao;
+	
+	@Before
+	public void setup(){
+		userDao = new UserDao();
+	}
+	
 	@Test
 	public void selectUserAll() {
 		/***Given***/
-		UserDao dao = new UserDao();
+		UserDaoInf dao = userDao;
 
 		/***When***/
 		List<JSPUserVO> user_list = dao.selectUserAll();
@@ -23,13 +32,13 @@ public class DaoTest {
 		System.out.println(user_list.get(0).getName());
 		/***Then***/
 
-		assertEquals(5, user_list.size());
+		assertEquals(105, user_list.size());
 	}
 	
 	@Test
 	public void selectUserTest() {
 		/***Given***/
-		UserDao dao = new UserDao();
+		UserDaoInf dao = userDao;
 		
 		/***When***/
 		JSPUserVO user= dao.selectUser("brown");
@@ -42,8 +51,9 @@ public class DaoTest {
 	
 	@Test
 	public void selectUserByUserVO() {
+		
 		/***Given***/
-		UserDao dao = new UserDao();
+		UserDaoInf dao = userDao;
 		JSPUserVO user_input = new JSPUserVO();
 		user_input.setUserId("brown");
 		
@@ -53,5 +63,24 @@ public class DaoTest {
 		/***Then***/
 		assertNotNull(user);
 		assertEquals("brown", user.getUserId());
+	}
+	
+	
+	/**
+	* Method : getUserCnt
+	* 작성자 : sem
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 전체 건수 조회
+	*/
+	@Test
+	public void getUserCntTest() {
+		/***Given***/
+		
+		/***When***/
+		int totalUserCnt = userDao.getUserCnt();
+		/***Then***/
+		assertEquals(105, totalUserCnt);
+		
 	}
 }
