@@ -106,4 +106,69 @@ public class UserDao implements UserDaoInf{
 		
 		return totalUserCnt;
 	}
+	
+	
+	/**
+	* Method : getUserCnt
+	* 작성자 : pc20
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 등록
+	*/
+	@Override
+	public int insertUser(JSPUserVO user) {
+		
+		SqlSessionFactory factory = SQLFactoryBuilder.getSqlSessionFactory();
+		
+		SqlSession session = factory.openSession();
+		
+		int insertCnt = session.insert("userSQL.insertUser", user);
+		
+		//insert 한 후에는 꼭 커밋을 해주자!
+		session.commit();
+		session.close();
+		
+		return insertCnt;
+	}
+
+	
+	
+	/**
+	* Method : deleteUser
+	* 작성자 : pc20
+	* 변경이력 :
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 삭제
+	*/
+	@Override
+	public int deleteUser(String userId) {
+		
+		SqlSessionFactory factory = SQLFactoryBuilder.getSqlSessionFactory();
+		
+		SqlSession session = factory.openSession();
+		
+		int deleteCnt = session.delete("userSQL.deleteUser", userId);
+		
+		session.commit();
+		session.close();
+		
+		return deleteCnt;
+	}
+
+	@Override
+	public int updateProfile(JSPUserVO user) {
+		
+		SqlSessionFactory factory = SQLFactoryBuilder.getSqlSessionFactory();
+		
+		SqlSession session = factory.openSession();
+		
+		int updateCnt = session.update("userSQL.updateProfile", user);
+		session.commit();
+		session.close();
+		
+		return updateCnt;
+	}
+	
+	
 }

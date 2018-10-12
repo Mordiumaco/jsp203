@@ -30,4 +30,21 @@
   <select id ="getUserCnt" resultType="int">
   	select count(*) from jspuser
   </select>
+  
+  <!-- 유저 등록 -->
+  <insert id="insertUser" parameterType="JSPUserVO">
+  insert into jspuser(           
+  userId, password, name, addr1, addr2, zipcd, birth, email, tel, profile)
+  values( #{userId}, #{password}, #{name}, #{addr1}, #{addr2}, #{zipcd}, #{birth}, #{email}, #{tel}, #{profile})
+  </insert>
+  
+  <!-- 유저 삭제 -->
+  <delete id="deleteUser" parameterType="String">
+  	delete from jspuser
+  	where userId = #{userId}
+  </delete>
+  
+  <update id="updateProfile" parameterType="JSPUserVO">
+  	update jspuser set profile = #{profile} where userId = #{userId} 
+  </update>
 </mapper>

@@ -39,7 +39,7 @@
 
 		<div class="blog-post">
 			<% JSPUserVO user = (JSPUserVO)request.getAttribute("user"); %>
-			<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form" action="/userUpdate?userId=<%=user.getUserId()%>" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
@@ -48,6 +48,12 @@
 								profilePath = profilePath == null ? "/profile/noimage.png": profilePath;
 							%>
 							<img src="<%=profilePath%>"/>
+						</div>
+						<div class="col-sm-offset-2 col-sm-10">
+								<input type="file" class="form-control" value="프로필" name="profile">
+						</div>
+						<div class="col-sm-offset-2 col-sm-10">
+							<input type="submit" class="btn btn-default" value="프로필 등록"/>
 						</div>
 					</div>
 			

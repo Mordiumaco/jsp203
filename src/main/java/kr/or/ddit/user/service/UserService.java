@@ -62,4 +62,21 @@ public class UserService implements UserServiceInf{
 		return resultMap;
 	}
 	
+	/**
+	* Method : getUserCnt
+	* 작성자 : pc20
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 등록
+	*/
+	@Override
+	public int insertUser(JSPUserVO user){
+		return dao.insertUser(user);
+	}
+
+	@Override
+	public int updateProfile(JSPUserVO user) {
+		return dao.updateProfile(user);
+	}
+	
 }	

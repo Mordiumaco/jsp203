@@ -24,4 +24,15 @@ public interface UserServiceInf {
 	* Method 설명 : 사용자 페이징 조회
 	*/
 	public Map<String, Object> selectUserPageList(PageVo page);
+	
+	/**
+	* Method : getUserCnt
+	* 작성자 : pc20
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 등록
+	*/
+	int insertUser(JSPUserVO user);
+	
+	public int updateProfile(JSPUserVO user);
 }

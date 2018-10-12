@@ -26,4 +26,26 @@ public interface UserDaoInf {
 	* Method 설명 : 사용자 전체 건수 조회
 	*/
 	int getUserCnt();
+	
+	/**
+	* Method : getUserCnt
+	* 작성자 : pc20
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 등록
+	*/
+	int insertUser(JSPUserVO user);
+	
+	
+	/**
+	* Method : deleteUser
+	* 작성자 : pc20
+	* 변경이력 :
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 삭제
+	*/
+	public int deleteUser(String userId);
+	
+	public int updateProfile(JSPUserVO user);
 }
