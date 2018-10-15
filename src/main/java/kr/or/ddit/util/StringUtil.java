@@ -1,5 +1,7 @@
 package kr.or.ddit.util;
 
+import java.util.Arrays;
+
 public class StringUtil {
 	
 	/**
@@ -20,6 +22,28 @@ public class StringUtil {
 		}
 		
 		return fileName;
+	}
+
+	public static String getCookie(String cookieString, String key) {
+		
+		/*int index = cookieString.indexOf(key)+key.length()+1;
+		
+		String result = cookieString.substring(index, cookieString.indexOf(";"));*/
+		String[] splits = cookieString.split(";");
+		
+		System.out.println(Arrays.toString(splits));
+		
+		for(int i = 0; i < splits.length; i++){
+			
+			if(splits[i].startsWith(key)){
+				System.out.println(splits[i]);
+				return splits[i].substring(splits[i].indexOf(key)+key.length()+1);
+			}
+			
+		}
+		
+
+		return null;
 	}
 	
 }

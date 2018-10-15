@@ -11,7 +11,42 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="icon/favicon.ico">
+    <script src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			console.log("test");
+			
+			//remember 쿠키값이 Y이면
+			//remember.me 체크박스 체크 
+			//userId input value를 쿠키 값으로 설정 
+			
+			if(getCookie("remember")=="Y"){
+				$("#remember").attr("checked",true)
+			}
+			
+			$("#userId").attr("value", getCookie("userId"));
+			
+			
+		});
 	
+		//쿠키인자를 자바스크립트로 받아보자
+		function getCookie(cookieName){
+			//cookieString --> document.cookie
+			var cookies = document.cookie.split("; ");
+			
+			var cookieValue = "";
+			//for(var str : cookies){
+			for(var i = 0; i < cookies.length; i++){
+				var str = cookies[i];
+				if(str.startsWith(cookieName + "=")){
+					cookieValue = str.substring((cookieName+"=").length)
+				}
+			}
+			
+			return cookieValue; 
+		}	
+	
+	</script>
     <title>Hello DDIT</title>
 
     <!-- Bootstrap core CSS -->
@@ -32,26 +67,26 @@
   </head>
 
   <body>
-
+	
     <div class="container">
 
       <form class="form-signin" action="/JSPLoginServlet" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" name="id" class="form-control" value="brown" placeholder="Email address" required autofocus>
+        <input type="text" name="id" id="userId" class="form-control" value="" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" class="form-control" value="brownpass" placeholder="Password" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input id="remember" type="checkbox" name="remember-me" value="remember-me"> Remember me
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
     </div> <!-- /container -->
-	<%
-	
+	<%	
+		
 	%>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

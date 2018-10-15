@@ -6,12 +6,14 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.Session;
+import org.apache.tomcat.util.http.Cookies;
 
 import kr.or.ddit.db.TempDao;
 import kr.or.ddit.db.TempService;
@@ -30,8 +32,39 @@ public class JSPLoginServlet extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String remember = request.getParameter("remember-me");
+		//remember-me 파라미터 받아서 sysout으로 출력
 		
-		System.out.println(id);
+		//remember == null: 아이디 기억 사용 안함
+		//
+		if(remember == null){
+			Cookie[] cookies = request.getCookies();
+			
+			for(Cookie cookie : cookies){
+				//cookie 이름이 remember, userId 일경우 maxage 
+				//-1로 설정하여 쿠키를 유효하지 않도록 설정한다. 
+				//System.out.println(cookie.getName());
+				if(cookie.getName().equals("userId")||cookie.getName().equals("remember")){
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
+				}
+			}
+			
+		//remember != null 아이디 기억 사용
+		}else{
+			//response 객체에 쿠키를 저장
+			Cookie cookie = new Cookie("remember", "Y");
+			Cookie userIdCookie = new Cookie("userId", id);
+			
+			//쿠키의 유지시간을 정해준다. setMaxAge(초); 
+			//cookie.setMaxAge(60*60*24);
+			
+			response.addCookie(cookie);
+			response.addCookie(userIdCookie);
+			
+		}
+		
+		
 		response.setCharacterEncoding("utf-8");
 		
 		UserServiceInf service = new UserService();
