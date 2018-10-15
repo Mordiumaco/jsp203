@@ -12,6 +12,8 @@
     <meta name="author" content="">
     <link rel="icon" href="icon/favicon.ico">
     <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- 쿠키 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			console.log("test");
@@ -31,6 +33,7 @@
 	
 		//쿠키인자를 자바스크립트로 받아보자
 		function getCookie(cookieName){
+			
 			//cookieString --> document.cookie
 			var cookies = document.cookie.split("; ");
 			
