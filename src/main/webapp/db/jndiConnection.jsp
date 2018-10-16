@@ -58,7 +58,6 @@
 					ctx.font = "60px Arial";
 					ctx.fillText("<%=rs.getString("name")%>",15, 125);
 					
-					
 				</script>
 				
 		<% 		
