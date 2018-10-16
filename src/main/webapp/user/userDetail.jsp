@@ -1,6 +1,8 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,11 +45,21 @@
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
+						
+							<c:choose>
+								<c:when test="${user.profile!=null}">
+									<img src="${user.profile}"/>
+								</c:when>
+								<c:otherwise><img src="/profile/noimage.png"/></c:otherwise>
+							</c:choose>
+							<%-- 
+							<img src="<%=profilePath%>"/>
 							<%
 								String profilePath = user.getProfile();
 								profilePath = profilePath == null ? "/profile/noimage.png": profilePath;
 							%>
 							<img src="<%=profilePath%>"/>
+							 --%>
 						</div>
 						<div class="col-sm-offset-2 col-sm-10">
 								<input type="file" class="form-control" value="프로필" name="profile">

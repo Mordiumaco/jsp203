@@ -1,6 +1,8 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,13 +123,18 @@
 		        <span aria-hidden="true">&laquo;</span>
 		      </a>
 		    </li>
-		<%
+		    
+		    <c:forEach begin="1" end="${pageCnt}" var="i">
+		    	<li><a href="/userPageList?page=${i}">${i}</a></li>
+		    </c:forEach>
+		    
+		<%-- <%
 			for(int i = 1; i <= pageCnt; i++){
 		%>
 				<li><a href="/userPageList?page=<%=i%>"><%=i%></a></li>
 		<% 
 			}
-		%>
+		%> --%>
 			<!-- 	<li><a href="/userPageList?page=1">1</a></li>
 				<li><a href="/userPageList?page=2">2</a></li>
 				<li><a href="/userPageList?page=3">3</a></li>

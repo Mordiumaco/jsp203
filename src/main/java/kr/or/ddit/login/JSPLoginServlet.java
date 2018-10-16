@@ -82,7 +82,7 @@ public class JSPLoginServlet extends HttpServlet {
 			if(id.equals(user.getUserId())&&password.equals(user.getPassword())){
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
+				session.setAttribute("S_USER", user);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/main.jsp");
 				rd.forward(request, response);

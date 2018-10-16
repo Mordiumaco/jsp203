@@ -1,6 +1,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +46,7 @@
 
 			<p>jsp를 배울 멤버들을 소개합니당</p>
 			<hr>
-			
+<%-- 			
 			<ul>
 <%
 	List<JSPUserVO> userList = (List<JSPUserVO>)request.getAttribute("user_list");
@@ -58,8 +59,9 @@
 <% 
 	}
 %>
+
 				<li>servlet 동작원리</li>
-			</ul>
+			</ul> --%>
 		</div>
 	</div>
 </div>
@@ -74,10 +76,12 @@
 					<th>사용자 이름</th>
 					<th>사용자 생일</th>
 				</tr>
+	<%-- 			
 				<%
-
+			//유저 loop를 사용하여 출력
 			for(int i = 0; i < userList.size(); i++){
 		%>
+		
 				<tr>
 					<td><%=i+1%></td>
 					<td><%=userList.get(i).getUserId()%></td>
@@ -86,7 +90,17 @@
 				</tr>
 		<% 
 			}
-		%>
+		%>	
+		 --%>
+			<c:forEach items="${user_list}" var="vo">
+				<tr>
+					<td>${status.index}</td>
+					<td>${vo.userId}</td>
+					<td>${vo.name}</td>
+					<td><fmt:formatDate value="${vo.birth}" pattern="yyyy-MM-dd"/></td>
+				</tr>
+			</c:forEach>
+		
 			</table>
 		</div>
 
