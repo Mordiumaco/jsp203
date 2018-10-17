@@ -84,5 +84,7 @@ public class JSPUserVO {
 		this.profile = profile;
 	}
 	
-	
+	public boolean authPass(String encryptPass){
+		return getPassword().equals(encryptPass);
+	}
 }

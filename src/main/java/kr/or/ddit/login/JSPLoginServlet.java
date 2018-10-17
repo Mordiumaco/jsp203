@@ -17,6 +17,8 @@ import org.apache.tomcat.util.http.Cookies;
 
 import kr.or.ddit.db.TempDao;
 import kr.or.ddit.db.TempService;
+import kr.or.ddit.encrypt.seed.KISA_SEED_CBC;
+import kr.or.ddit.encrypt.sha.KISA_SHA256;
 import kr.or.ddit.user.dao.UserDao;
 import kr.or.ddit.user.model.JSPUserVO;
 import kr.or.ddit.user.service.UserService;
@@ -77,9 +79,10 @@ public class JSPLoginServlet extends HttpServlet {
 		
 		JSPUserVO user = service.selectUser(id);
 		
+		String encryptpass = KISA_SHA256.encrypt(password);
 		
 		if(user != null){
-			if(id.equals(user.getUserId())&&password.equals(user.getPassword())){
+			if(id.equals(user.getUserId())&& user.authPass(encryptpass)){
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("S_USER", user);
