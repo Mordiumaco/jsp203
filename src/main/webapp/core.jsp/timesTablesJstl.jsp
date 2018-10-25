@@ -5,7 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<%
+	String number = request.getParameter("number");
+	
+%>
 <title>Insert title here</title>
 <style type="text/css">
 	td{
@@ -21,6 +24,7 @@
 
 </head>
 <body>
+<%-- ${param.number} --%>
 	<table>
 	<% 
 	for(int i = 1; i < 9; i++){
@@ -30,6 +34,7 @@
 			
 			<td> 			
 				<%=j%>*<%=i%> = <%=i*j%>
+				
 			</td>	
 			
 		<%		
