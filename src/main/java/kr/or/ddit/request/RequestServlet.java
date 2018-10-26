@@ -54,7 +54,9 @@ public class RequestServlet extends HttpServlet {
 		
 		//--redirect 방식
 		//resp.sendRedirect("main.jsp?id="+id1+"&password="+password);
-		response.sendRedirect("request/requestResult.jsp?");
+		//response.sendRedirect("request/requestResult.jsp?");
+		
+		request.getRequestDispatcher("/filter/requestCount.jsp").forward(request, response);
 		
 	}
 	

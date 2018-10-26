@@ -28,6 +28,16 @@ import kr.or.ddit.user.service.UserServiceInf;
 public class JSPLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doPost(req,resp);
+	}
+
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
