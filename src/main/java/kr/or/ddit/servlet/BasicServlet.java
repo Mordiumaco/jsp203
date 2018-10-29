@@ -19,16 +19,14 @@ import javax.servlet.http.HttpServletResponse;
 * @see
 *
 * <pre>
-* << �����̷�(Modification Information) >>
-*
-* ������ ��������
-* ------ ------------------------
-* pc20 ���� ����
+
 *
 * </pre>
 */
 public class BasicServlet extends HttpServlet{
 	
+	private static final long serialVersionUID = 8588958092319381765L;
+
 	@Override
 	public void init() throws ServletException {
 		
@@ -39,16 +37,12 @@ public class BasicServlet extends HttpServlet{
 		
 	}
 	
-	//��û http �޼��忡 ���� ����Ǵ� �޼ҵ尡 �޶�����. 
 	//get : doGet
 	//post: doPost
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		//HttpServletRequest : ��û�� ���� ���� 
-		//HttpServletResponse : ���信 ���� ���� 
 		
 		
 		resp.setContentType("text/html; charset=utf-8");
@@ -58,10 +52,6 @@ public class BasicServlet extends HttpServlet{
 		pw.print("hello. world");
 		pw.print(date);*/
 		
-		//����1
-		//date format�� �̿��Ͽ� 
-		//��-��-�� �ð� �� ȭ�鿡 ��� 
-		//simpleDate format ��� 
 		
 		
 		Date testDate = new Date();
@@ -86,7 +76,6 @@ public class BasicServlet extends HttpServlet{
 
 		pw.println("var date = new Date()");
 
-		pw.println("document.getElementsByTagName(\"body\")[0].innerHTML = \"����ð� : \" +date");
 
 		pw.println("</script>");
 		pw.println("</body>");
@@ -125,10 +114,6 @@ public class BasicServlet extends HttpServlet{
 	
 	
 }	
-
-
-// ���� �ڷ� : index.html --> url 
-// ���� �ڷ� : servlet --> url mapping ���� �ʿ� : web.xml
 
 
    
