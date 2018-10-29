@@ -2,6 +2,7 @@ package kr.or.ddit.login;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,7 +41,12 @@ public class JSPLoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
+		
+		Map<String, String[]> reqMap = request.getParameterMap(); 
+		
+		String parameter = request.getParameter("newParameter");
+		System.out.println("newparameter = "+parameter);
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
@@ -97,7 +103,7 @@ public class JSPLoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("S_USER", user);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/main.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
 				rd.forward(request, response);
 				return;
 			}

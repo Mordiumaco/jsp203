@@ -3,6 +3,7 @@ package kr.or.ddit.login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -62,6 +63,8 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		req.setCharacterEncoding("utf-8");
+		
+		
 		
 		//1. 사용자 아이디, 비밀번호를 request객체에서 받아온다. 
 		//2. db에서 조회해온 아이디, 비밀번호를 체크를 한다. 

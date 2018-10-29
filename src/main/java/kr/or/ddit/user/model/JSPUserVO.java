@@ -2,7 +2,10 @@ package kr.or.ddit.user.model;
 
 import java.util.Date;
 
-public class JSPUserVO {
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+public class JSPUserVO implements HttpSessionBindingListener{
 	
 	private String userId;
 	private String password;
@@ -86,5 +89,15 @@ public class JSPUserVO {
 	
 	public boolean authPass(String encryptPass){
 		return getPassword().equals(encryptPass);
+	}
+	@Override
+	public void valueBound(HttpSessionBindingEvent event) {
+		
+		System.out.println("userVo: "+ event.getName());
+	}
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 }

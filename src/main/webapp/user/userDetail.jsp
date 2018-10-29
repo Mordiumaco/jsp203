@@ -48,7 +48,8 @@
 						
 							<c:choose>
 								<c:when test="${user.profile!=null}">
-									<img src="${user.profile}"/>
+<%-- 									<img src="${user.profile}"/> --%>
+									<img src="/fileDownload?userId=${user.userId}"/>
 								</c:when>
 								<c:otherwise><img src="/profile/noimage.png"/></c:otherwise>
 							</c:choose>
