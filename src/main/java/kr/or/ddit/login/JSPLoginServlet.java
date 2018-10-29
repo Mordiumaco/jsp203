@@ -1,7 +1,6 @@
 package kr.or.ddit.login;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -13,14 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
-import org.apache.tomcat.util.http.Cookies;
-
-import kr.or.ddit.db.TempDao;
-import kr.or.ddit.db.TempService;
-import kr.or.ddit.encrypt.seed.KISA_SEED_CBC;
 import kr.or.ddit.encrypt.sha.KISA_SHA256;
-import kr.or.ddit.user.dao.UserDao;
 import kr.or.ddit.user.model.JSPUserVO;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.user.service.UserServiceInf;
