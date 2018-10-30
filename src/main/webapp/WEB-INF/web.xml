@@ -72,10 +72,10 @@
     <filter-name>parameterFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping> -->
-  <listener>
+<!--   <listener>
     <listener-class>kr.or.ddit.listener.SessionListener</listener-class>
   </listener>
   <listener>
     <listener-class>kr.or.ddit.listener.SessionAttributeListener</listener-class>
-  </listener>
+  </listener> -->
 </web-app>
